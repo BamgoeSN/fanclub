@@ -59,3 +59,12 @@ function copyCodeToClipboard() {
     }, 2000);
   });
 }
+
+document
+  .getElementsByName("list-input")[0]
+  .addEventListener("keydown", function (event) {
+    if ((event.shiftKey || event.ctrlKey) && event.key === "Enter") {
+      event.preventDefault();
+      setCode();
+    }
+  });
