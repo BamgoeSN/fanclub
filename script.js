@@ -2,7 +2,14 @@ function tokenizeText(text) {
   return text
     .split("\n")
     .map((s) => s.trim().split(/\s+/))
-    .filter((arr) => arr.length === 2);
+    .filter((arr) => arr.length === 2 || arr.length > 3)
+    .map((arr) => {
+      if (arr.length == 2) {
+        return arr;
+      } else {
+        return [arr[1], arr[arr.length - 3]];
+      }
+    });
 }
 
 function generateCode(setter, tokens) {
