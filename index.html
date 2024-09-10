@@ -4,56 +4,41 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fanclub</title>
+    <link rel="stylesheet" href="./style.css" />
   </head>
+
   <body>
     <header>
-      <p>Fanclub Code Generator</p>
+      <h1>Fanclub Code Generator</h1>
     </header>
 
     <section>
-      <table>
-        <tr>
-          <td>닉네임</td>
-          <td>#</td>
-        </tr>
-        <tr>
-          <td>wizardrabbit</td>
-          <td>4</td>
-          <td><button>x</button></td>
-        </tr>
-        <tr>
-          <td>ychangsok</td>
-          <td>3</td>
-          <td><button>x</button></td>
-        </tr>
-        <tr>
-          <td>bamgoesn</td>
-          <td>3</td>
-          <td><button>x</button></td>
-        </tr>
-        <tr>
-          <td><textarea class="name" type="text"></textarea></td>
-          <td><textarea class="ac-cnt" type="number"></textarea></td>
-          <td><button>+</button></td>
-        </tr>
-      </table>
+      <div>Setter</div>
+      <div name="setter-input">
+        <input class="small-text" name="setter" />
+      </div>
+      <div>Data</div>
+      <div name="member-input">
+        <textarea class="large-text" name="list-input"></textarea>
+      </div>
+      <button name="code-gen" onclick="setCode()">Generate!</button>
     </section>
 
     <!-- 아래 코드 블럭은 MDN Web Docs의 code example을 참고하여 만들어보자 -->
     <!-- https://developer.mozilla.org/ko/docs/Learn/HTML/Tables/Basics -->
-    <section>
-      <div class="gen-code">
-        <div class="code-header">
-          <!-- /run py {복사} -->
-        </div>
-        <pre class="code-text">
-          <code>
-            <!-- 생성된 코드 -->
-            import random as rand
-            print("Hi")
-          </code>
-        </pre>
+    <section name="code-preview">
+      <pre class="code-block"><code name="code-text"></code></pre>
+      <div class="code-footer">
+        <button onclick="copyCodeToClipboard()">Copy</button>
+        <!-- /run py {복사} -->
+        <span name="copy-alert"></span>
       </div>
     </section>
+
+    <footer>
+      <p><a href="https://github.com/BamgoeSN/fanclub">Repository</a></p>
+    </footer>
   </body>
+
+  <script src="./script.js"></script>
 </html>
