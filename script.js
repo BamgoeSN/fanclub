@@ -1,13 +1,22 @@
-function tokenizeText(text) {
+function tokenizeText(text, setter) {
+  console.log(text, setter);
   return text
     .split("\n")
     .map((s) => s.trim().split(/\s+/))
     .filter((arr) => arr.length === 2 || arr.length > 3)
     .map((arr) => {
-      if (arr.length == 2) {
+      if (arr.length === 2) {
         return arr;
       } else {
         return [arr[1], arr[arr.length - 3]];
+      }
+    })
+    .filter((t) => t[1] > 0)
+    .map((t) => {
+      if (t[0] === setter) {
+        return [t[0], "0 # 세터입니다"];
+      } else {
+        return [t[0], t[1]];
       }
     });
 }
@@ -26,6 +35,7 @@ function setCode() {
   const setter = document.getElementsByName("setter")[0].value;
   const tokens = tokenizeText(
     document.getElementsByName("list-input")[0].value,
+    setter,
   );
   const code = generateCode(setter, tokens);
   document.getElementsByName("code-text")[0].textContent = code;
